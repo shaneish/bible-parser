@@ -146,5 +146,27 @@ rg "\\(#(\\w+-\\d+-\\d+)\\)" bible-format-example.md -r '$1' -o | awk -F'-' '{pr
  }
 ]
 ```
+or
+```python
+@dataclass
+class Verse:
+    id: int
+    text: str
+
+@dataclass
+class Chapter:
+    id: int
+    verses: list[Verse]
+
+@dataclass
+class Book:
+    book: str
+    abbrv: str
+    chapters: list[Chapter]
+
+@dataclass
+class Bible:
+    books: list[Book]
+```
 - use parsed json to generate github-readable markdown file
 - build cli which to search bible
